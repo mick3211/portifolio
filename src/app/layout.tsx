@@ -1,3 +1,4 @@
+import { Header } from '@/components/Header';
 import './globals.css';
 import { Inter } from 'next/font/google';
 
@@ -7,6 +8,22 @@ export const metadata = {
     title: 'Mickael Dev',
     description:
         'Desenvolvedor front-end apaixonado por criar experiências da Web envolventes e fáceis de usar.',
+    themeColor: '#18181b',
+    keywords: [
+        'Desenvolvedor',
+        'Front-end',
+        'Freelancer',
+        'frontend',
+        'web',
+        'programador',
+    ],
+    authors: [
+        {
+            name: 'Mickael Felizardo',
+            url: 'https://linkedin.com/in/mickael-felizardo-5221431b4',
+        },
+    ],
+    colorScheme: 'dark',
 };
 
 export default function RootLayout({
@@ -16,7 +33,13 @@ export default function RootLayout({
 }) {
     return (
         <html lang="pt-BR">
-            <body className={inter.className}>{children}</body>
+            <body className={inter.className}>
+                <div className="container mx-auto px-4">
+                    <Header />
+
+                    {children}
+                </div>
+            </body>
         </html>
     );
 }
