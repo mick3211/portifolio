@@ -5,7 +5,7 @@ export const Header: React.FC = () => {
         <header className="flex justify-between items-center mt-4 mb-24">
             <Link href="/">
                 <span className="text-2xl md:text-4xl font-semibold">
-                    Mickael
+                    Mickael F.
                 </span>
             </Link>
 

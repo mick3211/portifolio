@@ -5,6 +5,7 @@ import Lines from '../../../public/lines.svg';
 import Gradient from '../../../public/gradient.png';
 import Image from 'next/image';
 import { AnimatedLines } from '@/components/AnimatedLines';
+import { AnimatedText } from '@/components/clientComponents/AnimatedText';
 
 const skillIcons = [
     {
@@ -23,28 +24,24 @@ const skillIcons = [
 
 export const Hero: React.FC = () => {
     return (
-        <section
-            id="hero"
-            className="mt-24 flex flex-col-reverse items-center gap-12 sm:mt-32 lg:flex-row lg:items-end lg:gap-20 xl:gap-32"
-        >
-            {/* <Image
-                src={Lines}
-                className="absolute -top-32 -z-50 w-[564px] select-none opacity-10 sm:-left-50 sm:opacity-20"
-                alt=""
-            /> */}
-            <span className="absolute -top-32 -z-50 w-[564px] select-none opacity-10 sm:-left-50 sm:opacity-20">
+        <section id="hero" className="mt-24 mb-24 gap-12 sm:mt-32">
+            <div className="absolute -top-32 -z-50 w-full max-w-xl select-none opacity-10 md:left-44 sm:opacity-20 max-sm:hidden">
                 <AnimatedLines />
-            </span>
-            <Image
-                src={Gradient}
-                className="absolute -z-50 select-none sm:-top-48 animate-fadeIn"
-                alt=""
-            />
-            <div className="relative mx-auto">
+            </div>
+            <div className="relative w-full">
+                <Image
+                    src={Gradient}
+                    className="absolute -z-50 select-none animate-fadeIn sm:-top-64"
+                    alt=""
+                    aria-hidden
+                />
+            </div>
+            <div className="relative w-fit mx-auto">
                 <Image
                     src={Lines}
                     className="absolute -top-7 -left-4 -z-50 w-1/6 max-w-[86px] select-none sm:-top-10 sm:-left-6"
                     alt=""
+                    aria-hidden
                 />
                 <h1 className="text-4xl font-semibold sm:text-6xl 2xl:text-7xl">
                     Desenvolvedor <br /> Front End
@@ -65,6 +62,8 @@ export const Hero: React.FC = () => {
                     ))}
                 </div>
             </div>
+
+            <AnimatedText />
         </section>
     );
 };

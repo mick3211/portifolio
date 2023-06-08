@@ -7,3 +7,9 @@
         @apply bg-zinc-900 text-neutral-50;
     }
 }
+
+@layer utilities {
+    p.highlight-link > a {
+        @apply underline;
+    }
+}
