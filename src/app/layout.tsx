@@ -5,7 +5,10 @@ import { Inter } from 'next/font/google';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata = {
-    title: 'Mickael Dev',
+    title: {
+        default: 'Mickael Dev',
+        template: 'Mickael Dev | %s',
+    },
     description:
         'Desenvolvedor front-end apaixonado por criar experiências da Web envolventes e fáceis de usar.',
     themeColor: '#18181b',

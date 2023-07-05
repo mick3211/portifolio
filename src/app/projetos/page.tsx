@@ -4,6 +4,10 @@ import { getGistData } from '@/utils/getGistData';
 import Image from 'next/image';
 import Gradient from '../../../public/gradient.png';
 
+export const metadata = {
+    title: 'Projetos',
+};
+
 export default async function Projects() {
     const { projects } = await getGistData();
 
