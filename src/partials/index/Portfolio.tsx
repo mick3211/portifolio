@@ -27,7 +27,7 @@ export const Portfolio: React.FC<{ projects: ProjectInterface[] }> = ({
 
                 <Link
                     href="/projetos"
-                    className="mt-11 pt-3 pb-2 flex justify-center items-center gap-2 text-xl font-semibold bg-blue-600 rounded-sm md:mr-64 hover:bg-blue-700"
+                    className="mt-6 pt-3 pb-2 flex justify-center items-center gap-2 text-xl font-semibold bg-blue-600 rounded-sm md:mr-64 hover:bg-blue-700"
                 >
                     Ver todos os projetos
                     <svg

@@ -15,11 +15,10 @@ export const SkillCard: React.FC<SkillCardProps> = ({
     level,
     name,
     progress,
-    color,
     tempo,
 }) => {
     return (
-        <div className="relative flex gap-4 bg-zinc-800/30 px-4 py-3 rounded-md shadow-md md:backdrop-blur-md">
+        <div className="relative flex gap-4 bg-zinc-800/30 px-4 py-3 rounded-md shadow-md border-l-2 border-l-blue-500 md:backdrop-blur-md">
             {image && (
                 <Image
                     src={image}

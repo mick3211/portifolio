@@ -1,5 +1,6 @@
 import { CurriculoInterface } from '@/@types/CurriculoInterface';
 import { ProjectInterface } from '@/@types/ProjectInterface';
+import { Experiences } from '@/partials/index/Experiences';
 import { Hero } from '@/partials/index/Hero';
 import { Portfolio } from '@/partials/index/Portfolio';
 
@@ -44,6 +45,7 @@ export default async function Home() {
         <main>
             <Hero />
             <Portfolio projects={projects} />
+            <Experiences curriculo={curriculo} />
         </main>
     );
 }
