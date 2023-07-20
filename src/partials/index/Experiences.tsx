@@ -1,11 +1,11 @@
-import { CurriculoInterface } from '@/@types/CurriculoInterface';
 import { SectionTitled } from '@/components/SectionTitled';
 import { SkillCard } from '@/components/SkillCard';
+import { getGistData } from '@/utils/getGistData';
 import Link from 'next/link';
 
-export const Experiences: React.FC<{ curriculo: CurriculoInterface }> = ({
-    curriculo,
-}) => {
+export const Experiences: React.FC = async () => {
+    const { curriculo } = await getGistData();
+
     return (
         <SectionTitled title="Skills" id="skills" className="pt-24">
             <h2 className="text-2xl sm:text-3xl font-bold mb-5">

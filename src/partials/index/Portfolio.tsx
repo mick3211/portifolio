@@ -1,13 +1,13 @@
-import { ProjectInterface } from '@/@types/ProjectInterface';
 import { ProjectCard } from '@/components/ProjectCard';
 import { SectionTitled } from '@/components/SectionTitled';
 import Gradient from '../../../public/gradient.png';
 import Image from 'next/image';
 import Link from 'next/link';
+import { getGistData } from '@/utils/getGistData';
 
-export const Portfolio: React.FC<{ projects: ProjectInterface[] }> = ({
-    projects,
-}) => {
+export const Portfolio: React.FC = async () => {
+    const { projects } = await getGistData();
+
     return (
         <div className="relative">
             <SectionTitled title="Portifólio" id="Portifolio">
