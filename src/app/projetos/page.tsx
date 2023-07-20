@@ -29,7 +29,7 @@ export default async function Projects() {
                     ))}
                 </ul>
             </SectionTitled>
-            <span className="absolute -z-50 bottom-48 -left-[600px] scale-125 animate-fadeIn">
+            <span className="absolute -z-50 bottom-48 -left-[600px] md:scale-125 animate-fadeIn">
                 <Image src={Gradient} alt="" aria-hidden />
             </span>
         </div>
