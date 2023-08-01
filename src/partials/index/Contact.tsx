@@ -4,6 +4,7 @@ import { useRef, useState } from 'react';
 import { InputLabel } from '@/components/form/InputLabel';
 import { TextArea, TextInput } from '@/components/form/TextInput';
 import type { FormEvent } from 'react';
+import { Button } from '@/components/form/Button/Button';
 
 export const Contact: React.FC = () => {
     const [message, setMessage] = useState('');
@@ -88,10 +89,11 @@ export const Contact: React.FC = () => {
                         className="col-span-2"
                     />
                 </InputLabel>
-                <button
+                <Button
                     type="submit"
                     disabled={isSubmitting}
-                    className="flex gap-2 justify-center items-center bg-blue-500 py-2 px-3 rounded-sm hover:bg-blue-600 sm:w-fit active:bg-blue-700 justify-self-end md:col-start-2 disabled:opacity-25 disabled:cursor-default"
+                    className="justify-self-end md:col-start-2"
+                    variants={{ style: 'outlined' }}
                 >
                     Enviar
                     <svg
@@ -108,7 +110,7 @@ export const Contact: React.FC = () => {
                             clipRule="evenodd"
                         ></path>
                     </svg>
-                </button>
+                </Button>
             </form>
             {message.length > 0 && <p>{message}</p>}
         </section>

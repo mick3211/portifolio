@@ -1,5 +1,6 @@
 import { SectionTitled } from '@/components/SectionTitled';
 import { SkillCard } from '@/components/SkillCard';
+import { Button } from '@/components/form/Button/Button';
 import { getGistData } from '@/utils/getGistData';
 import Link from 'next/link';
 
@@ -69,14 +70,15 @@ export const Experiences: React.FC = async () => {
                     </li>
                 ))}
             </ul>
-            <Link
-                className="w-full flex gap-2 mt-8 justify-center items-center bg-blue-500 py-2 px-3 rounded-sm hover:bg-blue-600 sm:w-fit active:bg-blue-700"
-                type="button"
+            <Button
+                as={Link}
                 title="Baixar currículo"
                 href="https://docs.google.com/document/d/1oA2qOnHfasYOHSsggIhI6i53FHCDbdwJcjKarZqxrcA/export?format=pdf"
                 download="Currículo Mickael"
                 target="_blank"
                 rel="noreferrer"
+                variants={{ style: 'outlined' }}
+                className="mt-4"
             >
                 <svg
                     width="20"
@@ -93,7 +95,7 @@ export const Experiences: React.FC = async () => {
                     ></path>
                 </svg>
                 Baixar CV
-            </Link>
+            </Button>
         </SectionTitled>
     );
 };

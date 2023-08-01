@@ -5,12 +5,12 @@ import { motion } from 'framer-motion';
 export const AnimatedText = () => {
     return (
         <motion.div
-            className="mt-20 text-center"
+            className="mt-4 text-center"
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 0.7, y: 0 }}
             transition={{ delay: 1, duration: 1, ease: 'easeOut' }}
         >
-            <p>Dê uma olhada nos meus projetos :)</p>
+            <p>Ou dê uma olhada nos meus projetos :)</p>
             <svg
                 width="32"
                 height="32"
