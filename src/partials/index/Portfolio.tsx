@@ -4,6 +4,8 @@ import Gradient from '../../../public/gradient.png';
 import Image from 'next/image';
 import Link from 'next/link';
 import { getGistData } from '@/utils/getGistData';
+import { MotionDiv } from '@/components/clientComponents/MotionDiv';
+import { Button } from '@/components/form/Button/Button';
 
 export const Portfolio: React.FC = async () => {
     const { projects } = await getGistData();
@@ -14,20 +16,33 @@ export const Portfolio: React.FC = async () => {
                 <ul className="space-y-8 md:mr-64">
                     {projects.slice(0, 5).map((project, index) => (
                         <li key={index}>
-                            <ProjectCard
-                                name={project.name}
-                                image={project.image}
-                                description={project.description}
-                                tags={project.tags}
-                                url={project.url}
-                            />
+                            <MotionDiv
+                                initial={{ opacity: 0, y: 20 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                transition={{
+                                    delay: 0.4,
+                                    duration: 1,
+                                    ease: 'easeOut',
+                                }}
+                                viewport={{ once: true }}
+                            >
+                                <ProjectCard
+                                    name={project.name}
+                                    image={project.image}
+                                    description={project.description}
+                                    tags={project.tags}
+                                    url={project.url}
+                                />
+                            </MotionDiv>
                         </li>
                     ))}
                 </ul>
 
-                <Link
+                <Button
+                    as={Link}
                     href="/projetos"
-                    className="mt-6 pt-3 pb-2 flex justify-center items-center gap-2 text-xl font-semibold bg-blue-600 rounded-sm md:mr-64 hover:bg-blue-700"
+                    variants={{ style: 'outlined' }}
+                    className="mt-8 max-md:w-full md:mr-64"
                 >
                     Ver todos os projetos
                     <svg
@@ -44,10 +59,17 @@ export const Portfolio: React.FC = async () => {
                             clipRule="evenodd"
                         ></path>
                     </svg>
-                </Link>
+                </Button>
             </SectionTitled>
-            <span className="absolute -z-50 -bottom-48 -left-[600px] md:scale-125 animate-fadeIn">
-                <Image src={Gradient} alt="" aria-hidden />
+            <span className="absolute -z-50 -bottom-48 -left-[600px] md:scale-125">
+                <MotionDiv
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1 }}
+                    transition={{ delay: 1.5, duration: 1 }}
+                    viewport={{ once: true }}
+                >
+                    <Image src={Gradient} alt="" aria-hidden />
+                </MotionDiv>
             </span>
         </div>
     );
