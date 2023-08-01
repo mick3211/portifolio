@@ -6,6 +6,8 @@ import Gradient from '../../../public/gradient.png';
 import Image from 'next/image';
 import { AnimatedLines } from '@/components/AnimatedLines';
 import { AnimatedText } from '@/components/clientComponents/AnimatedText';
+import { Button } from '@/components/form/Button/Button';
+import Link from 'next/link';
 
 const skillIcons = [
     {
@@ -61,9 +63,16 @@ export const Hero: React.FC = () => {
                         </span>
                     ))}
                 </div>
+                <Button
+                    as={Link}
+                    href="#contato"
+                    variants={{ size: 'large' }}
+                    className="mt-10 w-full"
+                >
+                    Entre em contato
+                </Button>
+                <AnimatedText />
             </div>
-
-            <AnimatedText />
         </section>
     );
 };
