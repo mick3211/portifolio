@@ -12,7 +12,7 @@ export default async function Projects() {
   const { projects } = await getGistData();
 
   return (
-    <div className="relative pb-12">
+    <main className="relative pb-12" role="main">
       <SectionTitled title="Projetos">
         <h2 className="text-5xl font-semibold">Todos os projetos</h2>
         <ul className="gap-8 md:mr-64 grid lg:grid-cols-2 xl:grid-cols-3 items-stretch">
@@ -32,6 +32,6 @@ export default async function Projects() {
       <span className="absolute -z-50 bottom-48 -left-[600px] md:scale-125 animate-fadeIn">
         <Image src={Gradient} alt="" aria-hidden />
       </span>
-    </div>
+    </main>
   );
 }
