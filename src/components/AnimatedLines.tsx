@@ -18,7 +18,7 @@ export const AnimatedLines: React.FC = () => {
         initial={{ x: translateValue, y: -translateValue, opacity: 0 }}
         animate={{ x: 0, y: 0, opacity: 1 }}
         className="absolute"
-        transition={{ bounce: true, duration: duration, ease: 'easeOut' }}
+        transition={{ bounce: true, duration: duration }}
       />
       <MotionImage
         src={Rectangle1}
@@ -34,7 +34,6 @@ export const AnimatedLines: React.FC = () => {
           delay: 0.1,
           bounce: true,
           duration: duration,
-          ease: 'easeOut',
         }}
         style={{ x: '-50%' }}
       />
@@ -52,7 +51,6 @@ export const AnimatedLines: React.FC = () => {
           delay: 0.2,
           bounce: true,
           duration: duration,
-          ease: 'easeOut',
         }}
       />
     </div>
