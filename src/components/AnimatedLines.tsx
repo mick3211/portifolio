@@ -11,7 +11,7 @@ const MotionImage = motion(Image);
 
 export const AnimatedLines: React.FC = () => {
   return (
-    <div className="relative w-full max-w-xl" aria-hidden>
+    <div className="relative w-full max-w-xl print:hidden" aria-hidden>
       <MotionImage
         src={Rectangle2}
         alt=""

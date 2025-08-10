@@ -67,7 +67,7 @@ export const Hero: React.FC = () => {
           as={Link}
           href="#contato"
           variants={{ size: 'large' }}
-          className="mt-10 w-full"
+          className="mt-10 w-full print:hidden"
         >
           Entre em contato
         </Button>
