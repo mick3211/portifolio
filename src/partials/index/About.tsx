@@ -9,11 +9,11 @@ export const About: React.FC = () => {
           alt="Foto de perfil"
           width={200}
           height={200}
-          className="rounded-full border-4 border-blue-500 max-sm:w-48"
+          className="rounded-full border-4 border-blue-500 max-sm:w-40"
           unoptimized={false}
         />
         <div>
-          <p className="mb-2 max-w-[48ch] text-justify text-base md:text-lg">
+          <p className="mb-2 max-w-[48ch] text-base leading-7 sm:text-justify md:text-lg">
             Sou desenvolvedor front-end com 3 anos de experiência criando
             interfaces modernas e responsivas que realmente funcionam para as
             pessoas. Com domínio de React, Next.js e Flutter, venho
