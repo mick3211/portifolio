@@ -1,5 +1,4 @@
 import ReactIcon from '../../../public/React-icon.svg';
-import NextIcon from '../../../public/Nextjs-logo.svg';
 import TailwindIcon from '../../../public/Tailwind_CSS_Logo.svg';
 import FLutterIcon from '../../../public/flutter.png';
 import Lines from '../../../public/lines.svg';
