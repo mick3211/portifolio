@@ -25,6 +25,7 @@ export const SkillCard: React.FC<SkillCardProps> = ({
           alt={name}
           width={64}
           height={64}
+          unoptimized
           className="max-h-16 aspect-square object-contain"
         />
       )}
