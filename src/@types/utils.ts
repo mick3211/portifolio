@@ -1,6 +1,6 @@
-import { ComponentPropsWithoutRef } from 'react';
+import { ComponentProps, ComponentPropsWithoutRef } from 'react';
 
 export type PolimorphicProps<C extends React.ElementType, Props = {}> = {
-    as?: C;
+  as?: C;
 } & Props &
-    Omit<ComponentPropsWithoutRef<C>, keyof (Props & { as?: C })>;
+  Omit<ComponentProps<C>, keyof (Props & { as?: C })>;

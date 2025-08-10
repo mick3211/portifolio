@@ -4,12 +4,12 @@ import { Hero } from '@/partials/index/Hero';
 import { Portfolio } from '@/partials/index/Portfolio';
 
 export default async function Home() {
-    return (
-        <main>
-            <Hero />
-            <Portfolio />
-            <Experiences />
-            <Contact />
-        </main>
-    );
+  return (
+    <main role="main">
+      <Hero />
+      <Portfolio />
+      <Experiences />
+      <Contact />
+    </main>
+  );
 }

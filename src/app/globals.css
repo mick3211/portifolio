@@ -3,13 +3,21 @@
 @tailwind utilities;
 
 @layer base {
-    body {
-        @apply bg-zinc-900 text-neutral-50 overflow-x-hidden;
-    }
+  body {
+    @apply bg-zinc-900 text-neutral-50 overflow-x-hidden print:text-neutral-950;
+  }
 }
 
 @layer utilities {
-    p.highlight-link > a {
-        @apply underline;
-    }
+  p.highlight-link > a {
+    @apply underline;
+  }
+
+  a {
+    @apply print:hidden;
+  }
+
+  [aria-hidden='true'] {
+    @apply print:hidden;
+  }
 }
