@@ -1,6 +1,6 @@
 import ReactIcon from '../../../public/React-icon.svg';
 import TailwindIcon from '../../../public/Tailwind_CSS_Logo.svg';
-import FLutterIcon from '../../../public/flutter.png';
+import FLutterIcon from '../../../public/flutter.svg';
 import Lines from '../../../public/lines.svg';
 import Gradient from '../../../public/gradient.png';
 import Image from 'next/image';
@@ -58,7 +58,10 @@ export const Hero: React.FC = () => {
               <Image
                 src={icon.url}
                 alt={icon.name}
-                className="max-sm:h-6 h-8 w-8 aspect-square object-contain"
+                width={32}
+                height={32}
+                unoptimized
+                className="max-sm:h-6 aspect-square object-contain"
               />
             </span>
           ))}
