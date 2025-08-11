@@ -5,7 +5,7 @@ export const About: React.FC = () => {
     <section id="about" className="mb-24">
       <div className="flex animate-fadeInUpShort flex-col items-center justify-center gap-8 sm:flex-row">
         <Image
-          src="/profile3.jpg"
+          src="/profile.jpg"
           alt="Foto de perfil"
           width={200}
           height={200}
