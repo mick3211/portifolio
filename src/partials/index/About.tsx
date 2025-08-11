@@ -3,9 +3,9 @@ import Image from "next/image";
 export const About: React.FC = () => {
   return (
     <section id="about" className="mb-24">
-      <div className="animate-fadeInUpShort flex flex-col items-center justify-center gap-8 sm:flex-row">
+      <div className="flex animate-fadeInUpShort flex-col items-center justify-center gap-8 sm:flex-row">
         <Image
-          src="/profile2.jpg"
+          src="/profile3.jpg"
           alt="Foto de perfil"
           width={200}
           height={200}
