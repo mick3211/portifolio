@@ -1,11 +1,11 @@
-import { ProjectCard } from '@/components/ProjectCard';
-import { SectionTitled } from '@/components/SectionTitled';
-import Gradient from '../../../public/gradient.png';
-import Image from 'next/image';
-import Link from 'next/link';
-import { getGistData } from '@/utils/getGistData';
-import { MotionDiv } from '@/components/clientComponents/MotionDiv';
-import { Button } from '@/components/form/Button/Button';
+import { ProjectCard } from "@/components/ProjectCard";
+import { SectionTitled } from "@/components/SectionTitled";
+import Gradient from "../../../public/gradient.png";
+import Image from "next/image";
+import Link from "next/link";
+import { getGistData } from "@/utils/getGistData";
+import { MotionDiv } from "@/components/clientComponents/MotionDiv";
+import { Button } from "@/components/form/Button/Button";
 
 export const Portfolio: React.FC = async () => {
   const { projects } = await getGistData();
@@ -13,16 +13,16 @@ export const Portfolio: React.FC = async () => {
   return (
     <div className="relative">
       <SectionTitled title="Projetos" id="Portifolio">
-        <ul className="gap-8 md:mr-64 grid lg:grid-cols-2 items-stretch">
+        <ul className="grid items-stretch gap-8 md:mr-64 lg:grid-cols-2">
           {projects.slice(0, 4).map((project, index) => (
-            <li key={index}>
+            <li key={project.name}>
               <MotionDiv
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{
-                  delay: 0.4,
+                  delay: index > 1 ? 0 : 0.4,
                   duration: 1,
-                  ease: 'easeOut',
+                  ease: "easeOut",
                 }}
                 viewport={{ once: true }}
               >
@@ -41,7 +41,7 @@ export const Portfolio: React.FC = async () => {
         <Button
           as={Link}
           href="/projetos"
-          variants={{ style: 'outlined' }}
+          variants={{ style: "outlined" }}
           className="mt-8 max-md:w-full md:mr-64"
         >
           Ver todos os projetos
@@ -61,7 +61,7 @@ export const Portfolio: React.FC = async () => {
           </svg>
         </Button>
       </SectionTitled>
-      <span className="absolute -z-50 -bottom-48 -left-[600px] md:scale-125">
+      <span className="absolute -bottom-48 -left-[600px] -z-50 md:scale-125">
         <MotionDiv
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
