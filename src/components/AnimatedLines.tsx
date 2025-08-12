@@ -8,7 +8,7 @@ import { useState } from "react";
 
 const translateValue = 100;
 const duration = 0.3;
-const MotionImage = motion(Image);
+const MotionImage = motion.create(Image);
 
 export const AnimatedLines: React.FC = () => {
   const [done1, setDone1] = useState(false);
@@ -47,7 +47,7 @@ export const AnimatedLines: React.FC = () => {
         initial={{ x: translateValue, y: -translateValue, opacity: 0 }}
         animate={{ x: 0, y: 0, opacity: 1 }}
         className="absolute"
-        transition={{ bounce: true, duration: duration }}
+        transition={{ duration: duration }}
         style={
           done1
             ? {
@@ -70,7 +70,6 @@ export const AnimatedLines: React.FC = () => {
         animate={{ x: translateValue, y: 232, opacity: 1 }}
         transition={{
           delay: 0.1,
-          bounce: true,
           duration: duration,
         }}
         style={
@@ -96,7 +95,6 @@ export const AnimatedLines: React.FC = () => {
         className="absolute"
         transition={{
           delay: 0.2,
-          bounce: true,
           duration: duration,
         }}
         style={
