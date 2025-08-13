@@ -23,13 +23,13 @@ export const Contact: React.FC = () => {
   return (
     <section
       id="contato"
-      className="mb-6 mt-24 rounded-lg bg-gradient-to-tl from-blue-950 to-blue-900 px-10 py-8 print:hidden"
+      className="mb-6 mt-24 rounded-lg bg-gradient-to-tl from-blue-950 to-blue-900 p-5 print:hidden sm:px-10 sm:py-8"
     >
       <h2 className="mb-6 text-3xl font-bold md:text-4xl">Entre em contato</h2>
 
       <Form
         action={action}
-        className="grid grid-cols-1 grid-rows-4 gap-y-4 md:grid-cols-2 md:gap-x-4"
+        className="grid grid-cols-1 grid-rows-3 gap-y-4 md:grid-cols-2 md:gap-x-4"
       >
         <Input
           name="fullName"
@@ -91,7 +91,11 @@ export const Contact: React.FC = () => {
               Mensagem enviada com sucesso! Em breve entrarei em contato.
             </motion.p>
           )}
-          <Button type="submit" disabled={buttonDisabled} className="ml-auto">
+          <Button
+            type="submit"
+            disabled={buttonDisabled}
+            className="sm:ml-auto"
+          >
             Enviar mensagem
             <svg
               width="15"
