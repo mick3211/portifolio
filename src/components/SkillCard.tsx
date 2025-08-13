@@ -1,5 +1,5 @@
-import Image from 'next/image';
-import React from 'react';
+import Image from "next/image";
+import React from "react";
 
 interface SkillCardProps {
   name: string;
@@ -18,7 +18,7 @@ export const SkillCard: React.FC<SkillCardProps> = ({
   tempo,
 }) => {
   return (
-    <div className="relative flex gap-4 bg-zinc-800/30 px-4 py-3 rounded-md shadow-md border-l-2 border-l-blue-500 md:backdrop-blur-md">
+    <div className="relative flex items-center gap-4 rounded-md border-l-2 border-l-blue-500 bg-zinc-800/30 px-4 py-3 shadow-md md:backdrop-blur-md">
       {image && (
         <Image
           src={image}
@@ -26,21 +26,21 @@ export const SkillCard: React.FC<SkillCardProps> = ({
           width={64}
           height={64}
           unoptimized
-          className="max-h-16 aspect-square object-contain"
+          className="aspect-square max-h-16 object-contain"
         />
       )}
       <div className="flex-1">
-        <h3 className="font-bold text-xl sm:text-2xl">{name}</h3>
+        <h3 className="text-xl font-bold sm:text-2xl">{name}</h3>
         <p className="text-xs">
           {level} {tempo && <> &#x2022; </>} {tempo}
         </p>
         {progress && (
-          <div className="h-1 bg-zinc-700 mt-2">
+          <div className="mt-2 h-1 bg-zinc-700">
             <div
-              className="h-[inherit] bg-blue-500 animate-extend"
+              className="animate-extend h-[inherit] bg-blue-500"
               style={
                 {
-                  '--final-width': progress + '%',
+                  "--final-width": progress + "%",
                 } as React.StyleHTMLAttributes<HTMLDivElement>
               }
             />

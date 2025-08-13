@@ -1,47 +1,47 @@
-import ReactIcon from '../../../public/React-icon.svg';
-import TailwindIcon from '../../../public/Tailwind_CSS_Logo.svg';
-import FLutterIcon from '../../../public/flutter.svg';
-import Lines from '../../../public/lines.svg';
-import Gradient from '../../../public/gradient.png';
-import Image from 'next/image';
-import { AnimatedLines } from '@/components/AnimatedLines';
-import { AnimatedText } from '@/components/clientComponents/AnimatedText';
-import { Button } from '@/components/form/Button/Button';
-import Link from 'next/link';
+import ReactIcon from "../../../public/React-icon.svg";
+import TailwindIcon from "../../../public/Tailwind_CSS_Logo.svg";
+import FLutterIcon from "../../../public/flutter.svg";
+import Lines from "../../../public/lines.svg";
+import Gradient from "../../../public/gradient.png";
+import Image from "next/image";
+import { AnimatedLines } from "@/components/AnimatedLines";
+import { AnimatedText } from "@/components/clientComponents/AnimatedText";
+import { Button } from "@/components/form/Button/Button";
+import Link from "next/link";
 
 const skillIcons = [
   {
-    name: 'React',
+    name: "React",
     url: ReactIcon,
   },
   {
-    name: 'Tailwind CSS',
+    name: "Tailwind CSS",
     url: TailwindIcon,
   },
   {
-    name: 'Flutter',
+    name: "Flutter",
     url: FLutterIcon,
   },
 ];
 
 export const Hero: React.FC = () => {
   return (
-    <section id="hero" className="mt-24 mb-24 gap-12 sm:mt-32">
-      <div className="absolute -top-32 -z-50 w-full max-w-xl select-none opacity-10 md:left-44 sm:opacity-20 max-sm:hidden">
+    <section id="hero" className="mb-24 mt-24 gap-12 sm:mt-32">
+      <div className="absolute -top-32 -z-50 w-full max-w-xl select-none opacity-10 max-sm:hidden sm:opacity-20 md:left-44">
         <AnimatedLines />
       </div>
       <div className="relative w-full">
         <Image
           src={Gradient}
-          className="absolute -z-50 select-none animate-fadeIn sm:-top-64"
+          className="absolute -z-50 animate-fadeIn select-none sm:-top-64"
           alt=""
           aria-hidden
         />
       </div>
-      <div className="relative w-fit mx-auto">
+      <div className="relative mx-auto w-fit">
         <Image
           src={Lines}
-          className="absolute -top-7 -left-4 -z-50 w-1/6 max-w-[86px] select-none sm:-top-10 sm:-left-6"
+          className="absolute -left-4 -top-7 -z-50 w-1/6 max-w-[86px] select-none sm:-left-6 sm:-top-10"
           alt=""
           aria-hidden
         />
@@ -49,7 +49,7 @@ export const Hero: React.FC = () => {
           Desenvolvedor <br /> Front End
         </h1>
         <div className="mt-6 flex gap-2">
-          {skillIcons.map(icon => (
+          {skillIcons.map((icon) => (
             <span
               key={icon.name}
               className="rounded-md bg-zinc-800 px-3 py-2"
@@ -61,20 +61,30 @@ export const Hero: React.FC = () => {
                 width={32}
                 height={32}
                 unoptimized
-                className="max-sm:h-6 aspect-square object-contain"
+                className="aspect-square object-contain max-sm:h-6"
               />
             </span>
           ))}
         </div>
-        <Button
-          as={Link}
-          href="#contato"
-          variants={{ size: 'large' }}
-          className="mt-10 w-full print:hidden"
-        >
-          Entre em contato
-        </Button>
-        <AnimatedText />
+        <div className="mt-10 flex flex-col-reverse gap-2 sm:flex-row">
+          <Button
+            as={Link}
+            href="#Portifolio"
+            variants={{ size: "large", style: "outlined" }}
+            className="flex-1"
+          >
+            Projetos
+          </Button>
+          <Button
+            as={Link}
+            href="#contato"
+            variants={{ size: "large" }}
+            className="flex-1"
+          >
+            Entre em contato
+          </Button>
+        </div>
+        {/* <AnimatedText /> */}
       </div>
     </section>
   );
