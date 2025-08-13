@@ -42,7 +42,7 @@ export const Contact: React.FC = () => {
           className="col-start-1 col-end-2"
         />
         <Input
-          name="E-mail"
+          name="email"
           placeholder="Insira seu e-mail"
           label="E-mail"
           type="email"

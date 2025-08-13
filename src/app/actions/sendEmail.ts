@@ -18,7 +18,10 @@ export default async function sendEmail(
 
   // Validate form data
   if (!name || !email || !subject || !content) {
-    throw new Error("Missing required fields");
+    return {
+      error: true,
+      message: "Campos inválidos",
+    };
   }
 
   const html = `
