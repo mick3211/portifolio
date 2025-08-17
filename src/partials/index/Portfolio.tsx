@@ -3,13 +3,15 @@ import { SectionTitled } from "@/components/SectionTitled";
 import Gradient from "../../../public/gradient.png";
 import Image from "next/image";
 import Link from "next/link";
-import { getGistData } from "@/utils/getGistData";
 import { MotionDiv } from "@/components/clientComponents/MotionDiv";
 import { Button } from "@/components/form/Button/Button";
+import type { ProjectInterface } from "@/@types/ProjectInterface";
 
-export const Portfolio: React.FC = async () => {
-  const { projects } = await getGistData();
+type PortfolioProps = {
+  projects: ProjectInterface[];
+};
 
+export const Portfolio: React.FC<PortfolioProps> = async ({ projects }) => {
   return (
     <div className="relative">
       <SectionTitled title="Projetos" decorationText="Projects" id="Portifolio">

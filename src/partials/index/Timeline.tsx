@@ -1,49 +1,17 @@
 "use client";
 
-import { WorkExperience } from "@/@types/WorkExperience";
+import type { WorkExperience } from "@/@types/WorkExperience";
 import { MotionDiv } from "@/components/clientComponents/MotionDiv";
 import { SectionTitled } from "@/components/SectionTitled";
+import { getGistData } from "@/utils/getGistData";
 import { useMotionValueEvent, useScroll } from "framer-motion";
-import Image from "next/image";
-import { useRef, useState } from "react";
+import { useMemo, useRef, useState } from "react";
 
-const experiences: WorkExperience[] = [
-  {
-    companyName: "Tribunal de Contas da União",
-    startDate: "06/2024",
-    endDate: "06/2025",
-    position: "Estagiário de Power BI",
-    description:
-      "Atuei como estagiário no Tribunal de Contas da União, desenvolvendo dashboards e relatórios em Power BI para análise de dados do órgão.",
-    imgUrl:
-      "https://yt3.googleusercontent.com/ytc/AIdro_nzsVwo7RpejWfNajuD0rkQ3RuFHu1RP4bEIQzzHCjiFA=s900-c-k-c0x00ffffff-no-rj",
-  },
-  {
-    companyName: "Arcane Companion",
-    startDate: "01/2024",
-    endDate: "08/2024",
-    position: "Desenvolvedor Flutter",
-    description:
-      "Criei meu primeiro aplicativo mobile, o Arcane Companion, utilizando Flutter e disponibilizei-o na Play Store.",
-    imgUrl:
-      "https://play-lh.googleusercontent.com/vjpkNCYBDs8sNZocMsjHB1HXabHmeD0gkrkWGpkgNMnSQi5fSYtYgHiFdScj2hSb1VE=w240-h480-rw",
-  },
-  {
-    companyName: "Facedoor",
-    startDate: "06/2024",
-    endDate: "Atualmente",
-    position: "Desenvolvedor Frontend Jr.",
-    description:
-      "Atualmente sou desenvolvedor frontend na Facedoor, responsável pela implementação de interfaces e melhorias na experiência do usuário.",
-    imgUrl:
-      "https://media.licdn.com/dms/image/v2/D4D0BAQHe58osSdurnA/company-logo_400_400/company-logo_400_400/0/1707071560333?e=2147483647&v=beta&t=MesU2ZdoBCOII7-lw1tXF20AOl35bj3u92XZCU_5-zY",
-  },
-] as const;
+type TimeLineProps = {
+  pastJobs: WorkExperience[];
+};
 
-const presenceThreshold = 1 / experiences.length;
-const initialPresenceThreshold = presenceThreshold - presenceThreshold / 2;
-
-export const TimeLine: React.FC = () => {
+export const TimeLine: React.FC<TimeLineProps> = ({ pastJobs }) => {
   const targetRef = useRef<HTMLDivElement>(null);
   const [experiencesToShow, setExperiencesToShow] = useState(0);
   const { scrollYProgress } = useScroll({
@@ -51,6 +19,12 @@ export const TimeLine: React.FC = () => {
     target: targetRef,
     offset: ["start 0.8", "end 0.8"],
   });
+
+  const { presenceThreshold, initialPresenceThreshold } = useMemo(() => {
+    const presenceThreshold = 1 / pastJobs.length;
+    const initialPresenceThreshold = presenceThreshold - presenceThreshold / 2;
+    return { presenceThreshold, initialPresenceThreshold };
+  }, [pastJobs.length]);
 
   useMotionValueEvent(scrollYProgress, "change", (latest) => {
     const nextThreshold =
@@ -72,7 +46,7 @@ export const TimeLine: React.FC = () => {
     >
       <div className="relative max-md:ml-7">
         <div className="group grid max-md:ml-2 md:grid-cols-2">
-          {experiences.map((experience, index) => {
+          {pastJobs.map((experience, index) => {
             const rowStart = index + 1;
             const isVisible = experiencesToShow > index;
 

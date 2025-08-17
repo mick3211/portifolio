@@ -1,12 +1,16 @@
+import type { CurriculoInterface } from "@/@types/CurriculoInterface";
 import { SectionTitled } from "@/components/SectionTitled";
 import { SkillCard } from "@/components/SkillCard";
 import { Button } from "@/components/form/Button/Button";
-import { getGistData } from "@/utils/getGistData";
 import Link from "next/link";
 
-export const Experiences: React.FC = async () => {
-  const { curriculo } = await getGistData();
+type ExperiencesProps = {
+  curriculo: CurriculoInterface;
+};
 
+export const Experiences: React.FC<ExperiencesProps> = async ({
+  curriculo,
+}) => {
   return (
     <SectionTitled title="Skills" id="skills" className="pt-24">
       <h3 className="mb-5 text-lg font-bold">Conhecimentos</h3>
