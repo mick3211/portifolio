@@ -1,14 +1,32 @@
 "use client";
 
+import { WorkExperience } from "@/@types/WorkExperience";
 import { MotionDiv } from "@/components/clientComponents/MotionDiv";
 import { useMotionValueEvent, useScroll } from "framer-motion";
+import Image from "next/image";
 import { useRef, useState } from "react";
 
-const experiences = [
-  "experience1",
-  "experience2",
-  "experience3",
-  "experience4",
+const experiences: WorkExperience[] = [
+  {
+    companyName: "Tribunal de Contas da União",
+    startDate: "06/2024",
+    endDate: "06/2025",
+    position: "Estagiário de Power BI",
+    description:
+      "Atuei como estagiário no Tribunal de Contas da União, desenvolvendo dashboards e relatórios em Power BI para análise de dados do órgão.",
+    imgUrl:
+      "https://yt3.googleusercontent.com/ytc/AIdro_nzsVwo7RpejWfNajuD0rkQ3RuFHu1RP4bEIQzzHCjiFA=s900-c-k-c0x00ffffff-no-rj",
+  },
+  {
+    companyName: "Facedoor",
+    startDate: "06/2024",
+    endDate: "Atualmente",
+    position: "Desenvolvedor Frontend Jr.",
+    description:
+      "Atualmente sou desenvolvedor frontend na Facedoor, responsável pela implementação de interfaces e melhorias na experiência do usuário.",
+    imgUrl:
+      "https://media.licdn.com/dms/image/v2/D4D0BAQHe58osSdurnA/company-logo_400_400/company-logo_400_400/0/1707071560333?e=2147483647&v=beta&t=MesU2ZdoBCOII7-lw1tXF20AOl35bj3u92XZCU_5-zY",
+  },
 ] as const;
 
 const presenceThreshold = 1 / experiences.length;
@@ -35,8 +53,8 @@ export const TimeLine: React.FC = () => {
   });
 
   return (
-    <div className="relative">
-      <div className="group grid md:grid-cols-2">
+    <div className="relative max-md:ml-7">
+      <div className="group grid max-md:ml-2 md:grid-cols-2">
         {experiences.map((experience, index) => {
           const rowStart = index + 1;
           const isVisible = experiencesToShow > index;
@@ -45,15 +63,33 @@ export const TimeLine: React.FC = () => {
             <MotionDiv
               key={index}
               initial={false}
-              animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : 20 }}
+              animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : 40 }}
               transition={{ duration: 0.3 }}
               style={{
                 gridRowStart: rowStart,
               }}
-              className="flex items-center justify-between py-40 odd:col-start-1 md:col-start-2 md:odd:flex-row-reverse [&:nth-child(even)>div]:-translate-x-1/2"
+              className="flex items-center justify-between py-20 odd:col-start-1 md:col-start-2 md:py-32 md:odd:flex-row-reverse [&:nth-child(even)>span]:-translate-x-1/2"
             >
-              <div className="h-20 w-20 -translate-x-1/2 rounded-full bg-red-400 md:translate-x-1/2" />
-              {experience}
+              <span className="h-14 w-14 shrink-0 -translate-x-1/2 before:absolute before:-top-4 before:left-1/2 before:h-4 before:w-4 before:-translate-x-1/2 before:bg-[radial-gradient(circle_at_top,_var(--tw-gradient-stops))] before:from-transparent before:from-45% before:to-zinc-900 before:to-45% after:absolute after:-bottom-4 after:left-1/2 after:h-4 after:w-4 after:-translate-x-1/2 after:bg-[radial-gradient(circle_at_bottom,_var(--tw-gradient-stops))] after:from-transparent after:from-45% after:to-zinc-900 after:to-45% md:h-20 md:w-20 md:translate-x-1/2">
+                <div className="relative h-full w-full overflow-hidden rounded-full">
+                  <Image
+                    alt={experience.companyName}
+                    src={experience.imgUrl}
+                    fill
+                  />
+                </div>
+              </span>
+              <div>
+                <h3 className="font-semibold md:text-lg">
+                  {experience.position}
+                </h3>
+                <p className="text-xs text-gray-500 md:text-sm">
+                  {experience.startDate} - {experience.endDate}
+                </p>
+                <p className="mt-2 text-sm md:text-base">
+                  {experience.description}
+                </p>
+              </div>
             </MotionDiv>
           );
         })}
@@ -64,7 +100,7 @@ export const TimeLine: React.FC = () => {
           style={{
             scaleY: scrollYProgress,
           }}
-          className="h-full w-full origin-top bg-blue-500"
+          className="h-full w-full origin-top rounded-full bg-blue-500"
         />
       </div>
     </div>
