@@ -2,12 +2,14 @@ import { SectionAnimatedText } from "./clientComponents/SectionAnimatedText";
 
 interface SectionTitledProps extends React.HTMLAttributes<HTMLElement> {
   title: string;
+  decorationText?: string;
   children?: React.ReactNode;
 }
 
 export const SectionTitled: React.FC<SectionTitledProps> = ({
   title,
   children,
+  decorationText,
   ...props
 }) => {
   return (
@@ -16,7 +18,7 @@ export const SectionTitled: React.FC<SectionTitledProps> = ({
         <h2 className="relative mb-6 w-fit text-xl font-semibold after:absolute after:-bottom-1 after:left-0 after:h-[2px] after:w-10/12 after:bg-blue-500">
           {title}
         </h2>
-        <SectionAnimatedText title={title} />
+        <SectionAnimatedText title={decorationText ?? title} />
         {children}
       </div>
     </section>

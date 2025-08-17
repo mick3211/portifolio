@@ -32,7 +32,7 @@ export const SectionAnimatedText: React.FC<SectionAnimatedTextProps> = ({
     >
       <span
         title={title}
-        className="to-zinc-1000 bg-gradient-to-b from-blue-600 bg-clip-text text-[220px] font-bold uppercase text-transparent opacity-40"
+        className="to-zinc-1000 whitespace-nowrap bg-gradient-to-b from-blue-600 bg-clip-text text-[220px] font-bold uppercase text-transparent opacity-40"
       >
         {title}
       </span>

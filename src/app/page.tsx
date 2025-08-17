@@ -3,14 +3,19 @@ import { Contact } from "@/partials/index/Contact";
 import { Experiences } from "@/partials/index/Experiences";
 import { Hero } from "@/partials/index/Hero";
 import { Portfolio } from "@/partials/index/Portfolio";
+import { TimeLine } from "@/partials/index/Timeline";
+import { getGistData } from "@/utils/getGistData";
 
 export default async function Home() {
+  const { pastJobs, curriculo, projects } = await getGistData();
+
   return (
     <main role="main">
       <Hero />
       <About />
-      <Portfolio />
-      <Experiences />
+      <Portfolio projects={projects} />
+      <Experiences curriculo={curriculo} />
+      <TimeLine pastJobs={pastJobs} />
       <Contact />
     </main>
   );
