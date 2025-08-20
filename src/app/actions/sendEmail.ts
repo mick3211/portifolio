@@ -36,11 +36,12 @@ export default async function sendEmail(
     const resp = await mg.messages.create(
       "sandboxc2f5235dfb964714ade20d221a2a62ac.mailgun.org",
       {
-        from: `${name} <${email}>`,
+        from: `Mickael Dev <mickaelf.dev@gmail.com>`,
         to: [`Mickael Felizardo <${mailgunRecipient}>`],
+        replyTo: `${name} <${email}>`,
         subject: subject,
-        text: content, // Plain text version
-        html: html, // HTML formatted version
+        text: content,
+        html: html,
       },
     );
 
