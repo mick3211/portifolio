@@ -2,6 +2,7 @@ import type { CurriculoInterface } from "@/@types/CurriculoInterface";
 import { SectionTitled } from "@/components/SectionTitled";
 import { SkillCard } from "@/components/SkillCard";
 import { Button } from "@/components/form/Button/Button";
+import { getTranslations } from "next-intl/server";
 import Link from "next/link";
 
 type ExperiencesProps = {
@@ -11,9 +12,11 @@ type ExperiencesProps = {
 export const Experiences: React.FC<ExperiencesProps> = async ({
   curriculo,
 }) => {
+  const t = await getTranslations("main.experiences");
+
   return (
     <SectionTitled title="Skills" id="skills" className="pt-24">
-      <h3 className="mb-5 text-lg font-bold">Conhecimentos</h3>
+      <h3 className="mb-5 text-lg font-bold">{t("knowledge")}</h3>
       <ul className="grid gap-4 md:mr-64 lg:grid-cols-2">
         {curriculo.skills.hardSkills.map((skill, index) => (
           <li key={index} className="grid">
@@ -26,7 +29,7 @@ export const Experiences: React.FC<ExperiencesProps> = async ({
           </li>
         ))}
       </ul>
-      <h3 className="mb-5 mt-8 text-lg font-bold">Outros conhecimentos</h3>
+      <h3 className="mb-5 mt-8 text-lg font-bold">{t("otherKnowledge")}</h3>
       <ul className="flex flex-wrap gap-2 md:mr-64">
         {curriculo.skills.softSkills.map((skill, index) => (
           <li key={index} className="rounded-md bg-zinc-800/30 p-3 shadow-md">
@@ -34,7 +37,7 @@ export const Experiences: React.FC<ExperiencesProps> = async ({
           </li>
         ))}
       </ul>
-      <h3 className="mb-5 mt-8 text-lg font-bold">Línguas</h3>
+      <h3 className="mb-5 mt-8 text-lg font-bold">{t("languages")}</h3>
       <ul className="grid gap-4 md:mr-64 lg:grid-cols-2">
         {curriculo.languages.map((language, index) => (
           <li key={index}>
@@ -42,7 +45,7 @@ export const Experiences: React.FC<ExperiencesProps> = async ({
           </li>
         ))}
       </ul>
-      <h3 className="mb-5 mt-8 text-lg font-bold">Educação</h3>
+      <h3 className="mb-5 mt-8 text-lg font-bold">{t("education")}</h3>
       <ul className="grid gap-4 md:mr-64 lg:grid-cols-2">
         {curriculo.education.map((item, index) => (
           <li key={index}>
@@ -52,7 +55,7 @@ export const Experiences: React.FC<ExperiencesProps> = async ({
               level={item.university}
               tempo={
                 item.startDate +
-                (item.endDate ? ` - ${item.endDate}` : " - Agora")
+                (item.endDate ? ` - ${item.endDate}` : ` - ${t("now")}`)
               }
             />
           </li>
@@ -60,7 +63,7 @@ export const Experiences: React.FC<ExperiencesProps> = async ({
       </ul>
       <Button
         as={Link}
-        title="Baixar currículo"
+        title={t("downloadResume")}
         href="https://docs.google.com/document/d/1oA2qOnHfasYOHSsggIhI6i53FHCDbdwJcjKarZqxrcA/export?format=pdf"
         download="Currículo Mickael"
         target="_blank"
@@ -83,7 +86,7 @@ export const Experiences: React.FC<ExperiencesProps> = async ({
             clipRule="evenodd"
           ></path>
         </svg>
-        Baixar Currículo
+        {t("downloadResume")}
       </Button>
     </SectionTitled>
   );

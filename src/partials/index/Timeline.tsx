@@ -5,6 +5,7 @@ import { MotionDiv } from "@/components/clientComponents/MotionDiv";
 import { SectionTitled } from "@/components/SectionTitled";
 import { getGistData } from "@/utils/getGistData";
 import { useMotionValueEvent, useScroll } from "framer-motion";
+import { useTranslations } from "next-intl";
 import { useMemo, useRef, useState } from "react";
 
 type TimeLineProps = {
@@ -12,6 +13,7 @@ type TimeLineProps = {
 };
 
 export const TimeLine: React.FC<TimeLineProps> = ({ pastJobs }) => {
+  const t = useTranslations("main.timeline");
   const targetRef = useRef<HTMLDivElement>(null);
   const [experiencesToShow, setExperiencesToShow] = useState(0);
   const { scrollYProgress } = useScroll({
@@ -39,7 +41,7 @@ export const TimeLine: React.FC<TimeLineProps> = ({ pastJobs }) => {
 
   return (
     <SectionTitled
-      title="Experiências profissionais"
+      title={t("title")}
       decorationText="history"
       id="timeline"
       className="mt-24"

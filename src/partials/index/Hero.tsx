@@ -5,9 +5,9 @@ import Lines from "../../../public/lines.svg";
 import Gradient from "../../../public/gradient.png";
 import Image from "next/image";
 import { AnimatedLines } from "@/components/AnimatedLines";
-import { AnimatedText } from "@/components/clientComponents/AnimatedText";
 import { Button } from "@/components/form/Button/Button";
 import Link from "next/link";
+import { getTranslations } from "next-intl/server";
 
 const skillIcons = [
   {
@@ -24,7 +24,9 @@ const skillIcons = [
   },
 ];
 
-export const Hero: React.FC = () => {
+export const Hero: React.FC = async () => {
+  const t = await getTranslations();
+
   return (
     <section id="hero" className="mb-24 mt-24 gap-12 sm:mt-32">
       <div className="absolute -top-32 -z-50 w-full max-w-xl select-none opacity-10 max-sm:hidden sm:opacity-20 md:left-44">
@@ -38,7 +40,7 @@ export const Hero: React.FC = () => {
           aria-hidden
         />
       </div>
-      <div className="relative mx-auto w-fit">
+      <div className="relative mx-auto max-w-md">
         <Image
           src={Lines}
           className="absolute -left-4 -top-7 -z-50 w-1/6 max-w-[86px] select-none sm:-left-6 sm:-top-10"
@@ -46,7 +48,7 @@ export const Hero: React.FC = () => {
           aria-hidden
         />
         <h1 className="text-4xl font-semibold sm:text-6xl 2xl:text-7xl">
-          Desenvolvedor <br /> Front End
+          {t("main.hero.title.1")} <br /> {t("main.hero.title.2")}
         </h1>
         <div className="mt-6 flex gap-2">
           {skillIcons.map((icon) => (
@@ -73,7 +75,7 @@ export const Hero: React.FC = () => {
             variants={{ size: "large", style: "outlined" }}
             className="flex-1"
           >
-            Projetos
+            {t("common.projects")}
           </Button>
           <Button
             as={Link}
@@ -81,10 +83,9 @@ export const Hero: React.FC = () => {
             variants={{ size: "large" }}
             className="flex-1"
           >
-            Entre em contato
+            {t("common.contactMe")}
           </Button>
         </div>
-        {/* <AnimatedText /> */}
       </div>
     </section>
   );

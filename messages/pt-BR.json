@@ -1,0 +1,58 @@
+{
+  "metadata": {
+    "description": "Desenvolvedor front-end apaixonado por criar experiências da Web envolventes e fáceis de usar."
+  },
+  "main": {
+    "hero": {
+      "title": {
+        "1": "Desenvolvedor",
+        "2": "Front End"
+      }
+    },
+    "about": {
+      "description": "Sou desenvolvedor front-end com 3 anos de experiência criando interfaces modernas e responsivas que realmente funcionam para as pessoas. Com domínio de React, Next.js e Flutter, venho transformando ideias em produtos digitais leves, acessíveis e visualmente atraentes, tanto para web quanto mobile."
+    },
+    "experiences": {
+      "knowledge": "Conhecimentos",
+      "otherKnowledge": "Outros conhecimentos",
+      "languages": "Línguas",
+      "education": "Educação",
+      "now": "Agora",
+      "downloadResume": "Baixar currículo"
+    },
+    "timeline": {
+      "title": "Experiências profissionais"
+    },
+    "contact": {
+      "title": "Entre em contato",
+      "name": {
+        "placeholder": "Qual é o seu nome?",
+        "label": "Nome"
+      },
+      "email": {
+        "placeholder": "Insira seu e-mail",
+        "label": "E-mail"
+      },
+      "subject": {
+        "placeholder": "Qual o motivo do contato?",
+        "label": "Assunto"
+      },
+      "message": {
+        "placeholder": "Digite a sua mensagem",
+        "label": "Mensagem"
+      },
+      "success": "Mensagem enviada com sucesso! Em breve entrarei em contato.",
+      "submit": "Enviar mensagem",
+      "errors": {
+        "invalidFields": "Campos inválidos",
+        "generic": "Não foi possível enviar o email. Por favor, tente novamente mais tarde."
+      }
+    }
+  },
+  "common": {
+    "projects": "Projetos",
+    "contactMe": "Entre em contato",
+    "seeAllProjects": "Ver todos os projetos",
+    "allProjects": "Todos os projetos"
+  }
+}
