@@ -19,11 +19,10 @@ export const Experiences: React.FC<ExperiencesProps> = async ({
       <h3 className="mb-5 text-lg font-bold">{t("knowledge")}</h3>
       <ul className="grid gap-4 md:mr-64 lg:grid-cols-2">
         {curriculo.skills.hardSkills.map((skill, index) => (
-          <li key={index} className="grid">
+          <li key={index}>
             <SkillCard
               name={skill.name}
               image={skill.image}
-              level={skill.level}
               color={skill.color}
             />
           </li>
@@ -33,7 +32,7 @@ export const Experiences: React.FC<ExperiencesProps> = async ({
       <ul className="flex flex-wrap gap-2 md:mr-64">
         {curriculo.skills.softSkills.map((skill, index) => (
           <li key={index} className="rounded-md bg-zinc-800/30 p-3 shadow-md">
-            <span className="">{skill}</span>
+            <span>{skill}</span>
           </li>
         ))}
       </ul>
