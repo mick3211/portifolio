@@ -7,6 +7,8 @@ import { TimeLine } from "@/partials/index/Timeline";
 import { getGistData } from "@/utils/getGistData";
 import { setRequestLocale } from "next-intl/server";
 
+export const revalidate = 60 * 60 * 24; // 1 day
+
 export default async function Home({ params }: PageProps<"/[locale]">) {
   const locale = (await params).locale;
   const { pastJobs, curriculo, projects } = await getGistData(locale);

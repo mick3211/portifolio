@@ -9,6 +9,8 @@ export const metadata = {
   title: "Projetos",
 };
 
+export const revalidate = 60 * 60 * 24; // 1 day
+
 export default async function Projects({
   params,
 }: PageProps<"/[locale]/projetos">) {
