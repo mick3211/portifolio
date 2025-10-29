@@ -2,19 +2,26 @@ import { ProjectCard } from "@/components/ProjectCard";
 import { SectionTitled } from "@/components/SectionTitled";
 import Gradient from "../../../public/gradient.png";
 import Image from "next/image";
-import Link from "next/link";
 import { MotionDiv } from "@/components/clientComponents/MotionDiv";
 import { Button } from "@/components/form/Button/Button";
 import type { ProjectInterface } from "@/@types/ProjectInterface";
+import { getTranslations } from "next-intl/server";
+import { Link } from "@/i18n/navigation";
 
 type PortfolioProps = {
   projects: ProjectInterface[];
 };
 
 export const Portfolio: React.FC<PortfolioProps> = async ({ projects }) => {
+  const t = await getTranslations("common");
+
   return (
     <div className="relative">
-      <SectionTitled title="Projetos" decorationText="Projects" id="Portifolio">
+      <SectionTitled
+        title={t("projects")}
+        decorationText="Projects"
+        id="Portifolio"
+      >
         <ul className="grid items-stretch gap-8 md:mr-64 lg:grid-cols-2">
           {projects.slice(0, 4).map((project, index) => (
             <li key={project.name}>
@@ -46,7 +53,7 @@ export const Portfolio: React.FC<PortfolioProps> = async ({ projects }) => {
           variants={{ style: "outlined" }}
           className="mt-8 max-md:w-full md:mr-64"
         >
-          Ver todos os projetos
+          {t("seeAllProjects")}
           <svg
             width="32"
             height="32"

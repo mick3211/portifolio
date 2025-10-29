@@ -1,17 +1,21 @@
 "use client";
 
 import { Button } from "@/components/form/Button/Button";
-import sendEmail, { SendEmailActionState } from "@/app/actions/sendEmail";
+import sendEmail, {
+  SendEmailActionState,
+} from "@/app/[locale]/actions/sendEmail";
 import { useActionState } from "react";
 import { Input } from "@/components/form/Input";
 import { Form } from "@/components/form/Form";
 import { motion } from "framer-motion";
+import { useTranslations } from "next-intl";
 
 const initialState: SendEmailActionState = {
   error: false,
 };
 
 export const Contact: React.FC = () => {
+  const t = useTranslations("main.contact");
   const [formState, action, isPending] = useActionState(
     sendEmail,
     initialState,
@@ -25,7 +29,7 @@ export const Contact: React.FC = () => {
       id="contato"
       className="mb-6 mt-24 rounded-lg bg-gradient-to-tl from-blue-950 to-blue-900 p-5 print:hidden sm:px-10 sm:py-8"
     >
-      <h2 className="mb-6 text-3xl font-bold md:text-4xl">Entre em contato</h2>
+      <h2 className="mb-6 text-3xl font-bold md:text-4xl">{t("title")}</h2>
 
       <Form
         action={action}
@@ -33,8 +37,8 @@ export const Contact: React.FC = () => {
       >
         <Input
           name="fullName"
-          placeholder="Qual é o seu nome?"
-          label="Nome"
+          placeholder={t("name.placeholder")}
+          label={t("name.label")}
           pattern="^[a-zA-ZÀ-ÿ\s]+$"
           required
           minLength={3}
@@ -43,8 +47,8 @@ export const Contact: React.FC = () => {
         />
         <Input
           name="email"
-          placeholder="Insira seu e-mail"
-          label="E-mail"
+          placeholder={t("email.placeholder")}
+          label={t("email.label")}
           type="email"
           required
           minLength={3}
@@ -53,8 +57,8 @@ export const Contact: React.FC = () => {
         />
         <Input
           name="subject"
-          placeholder="Qual o motivo do contato?"
-          label="Assunto"
+          placeholder={t("subject.placeholder")}
+          label={t("subject.label")}
           required
           minLength={5}
           maxLength={50}
@@ -63,8 +67,8 @@ export const Contact: React.FC = () => {
         <Input
           as={<textarea className="h-full" />}
           name="content"
-          placeholder="Digite a sua mensagem"
-          label="Mensagem"
+          placeholder={t("message.placeholder")}
+          label={t("message.label")}
           required
           minLength={10}
           maxLength={500}
@@ -88,7 +92,7 @@ export const Contact: React.FC = () => {
               className="rounded-md bg-green-400 px-2 py-1 text-sm text-green-950"
               role="alert"
             >
-              Mensagem enviada com sucesso! Em breve entrarei em contato.
+              {t("success")}
             </motion.p>
           )}
           <Button
@@ -96,7 +100,7 @@ export const Contact: React.FC = () => {
             disabled={buttonDisabled}
             className="sm:ml-auto"
           >
-            Enviar mensagem
+            {t("submit")}
             <svg
               width="15"
               height="15"

@@ -6,7 +6,7 @@ import Rectangle2 from "../../public/Rectangle 4.svg";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useState } from "react";
 
-const translateValue = 100;
+const translateValue = 97;
 const duration = 0.3;
 const MotionImage = motion.create(Image);
 

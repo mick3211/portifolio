@@ -3,8 +3,9 @@
 import type { WorkExperience } from "@/@types/WorkExperience";
 import { MotionDiv } from "@/components/clientComponents/MotionDiv";
 import { SectionTitled } from "@/components/SectionTitled";
-import { getGistData } from "@/utils/getGistData";
 import { useMotionValueEvent, useScroll } from "framer-motion";
+import { useTranslations } from "next-intl";
+import Image from "next/image";
 import { useMemo, useRef, useState } from "react";
 
 type TimeLineProps = {
@@ -12,6 +13,7 @@ type TimeLineProps = {
 };
 
 export const TimeLine: React.FC<TimeLineProps> = ({ pastJobs }) => {
+  const t = useTranslations("main.timeline");
   const targetRef = useRef<HTMLDivElement>(null);
   const [experiencesToShow, setExperiencesToShow] = useState(0);
   const { scrollYProgress } = useScroll({
@@ -39,7 +41,7 @@ export const TimeLine: React.FC<TimeLineProps> = ({ pastJobs }) => {
 
   return (
     <SectionTitled
-      title="Experiências profissionais"
+      title={t("title")}
       decorationText="history"
       id="timeline"
       className="mt-24"
@@ -61,12 +63,12 @@ export const TimeLine: React.FC<TimeLineProps> = ({ pastJobs }) => {
                 }}
                 className="flex items-center justify-between py-20 odd:col-start-1 md:col-start-2 md:py-24 md:odd:flex-row-reverse [&:nth-child(even)>span]:-translate-x-1/2"
               >
-                <span className="h-14 w-14 shrink-0 -translate-x-1/2 before:absolute before:-top-4 before:left-1/2 before:h-4 before:w-4 before:-translate-x-1/2 before:bg-[radial-gradient(circle_at_top,_var(--tw-gradient-stops))] before:from-transparent before:from-45% before:to-zinc-900 before:to-45% after:absolute after:-bottom-4 after:left-1/2 after:h-4 after:w-4 after:-translate-x-1/2 after:bg-[radial-gradient(circle_at_bottom,_var(--tw-gradient-stops))] after:from-transparent after:from-45% after:to-zinc-900 after:to-45% md:h-20 md:w-20 md:translate-x-1/2">
+                <span className="h-14 w-14 shrink-0 -translate-x-1/2 before:absolute before:-top-[14px] before:left-1/2 before:h-4 before:w-4 before:-translate-x-1/2 before:bg-[radial-gradient(circle_at_top,_var(--tw-gradient-stops))] before:from-transparent before:from-45% before:to-zinc-900 before:to-45% after:absolute after:-bottom-[14px] after:left-1/2 after:-z-10 after:h-4 after:w-4 after:-translate-x-1/2 after:bg-[radial-gradient(circle_at_bottom,_var(--tw-gradient-stops))] after:from-transparent after:from-45% after:to-zinc-900 after:to-45% md:h-20 md:w-20 md:translate-x-1/2">
                   <div className="relative h-full w-full overflow-hidden rounded-full">
-                    <img
+                    <Image
                       alt={experience.companyName}
                       src={experience.imgUrl}
-                      className="h-full w-full object-cover"
+                      fill
                     />
                   </div>
                 </span>

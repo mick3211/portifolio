@@ -1,0 +1,58 @@
+{
+  "metadata": {
+    "description": "Front-end developer passionate about creating engaging, easy-to-use web experiences."
+  },
+  "main": {
+    "hero": {
+      "title": {
+        "1": "Front End",
+        "2": "Developer"
+      }
+    },
+    "about": {
+      "description": "I'm a front-end developer with 3 years of experience creating modern, responsive interfaces that really work for people. \nMastering React, Next.js and Flutter, I have been transforming ideas into lightweight, accessible and visually attractive digital products, both for web and mobile."
+    },
+    "experiences": {
+      "downloadResume": "Download Resume",
+      "education": "Education",
+      "knowledge": "Knowledge",
+      "languages": "Languages",
+      "now": "Now",
+      "otherKnowledge": "Other knowledge"
+    },
+    "timeline": {
+      "title": "Professional experiences"
+    },
+    "contact": {
+      "email": {
+        "label": "E-mail",
+        "placeholder": "Enter your email"
+      },
+      "message": {
+        "label": "Message",
+        "placeholder": "Type your message"
+      },
+      "name": {
+        "placeholder": "What is your name?",
+        "label": "Name"
+      },
+      "subject": {
+        "label": "Subject",
+        "placeholder": "What is the reason for the contact?"
+      },
+      "submit": "Send message",
+      "success": "Message sent successfully! \nI will be in touch soon.",
+      "title": "Get in touch",
+      "errors": {
+        "generic": "Unable to send email. Please try again later.",
+        "invalidFields": "Invalid fields"
+      }
+    }
+  },
+  "common": {
+    "contactMe": "Get in touch",
+    "projects": "Projects",
+    "seeAllProjects": "See all projects",
+    "allProjects": "All projects"
+  }
+}
