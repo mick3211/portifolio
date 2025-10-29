@@ -40,7 +40,7 @@ export const Hero: React.FC = async () => {
           aria-hidden
         />
       </div>
-      <div className="relative mx-auto max-w-md">
+      <div className="relative mx-auto w-fit max-w-md sm:w-full">
         <Image
           src={Lines}
           className="absolute -left-4 -top-7 -z-50 w-1/6 max-w-[86px] select-none sm:-left-6 sm:-top-10"
