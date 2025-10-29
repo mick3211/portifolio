@@ -7,8 +7,14 @@ interface Data {
   curriculo: CurriculoInterface;
   pastJobs: WorkExperience[];
 }
+type InternationalizedGistFile<Locale extends string, Data> = Record<
+  Locale,
+  Data
+>;
 
-export async function getGistData(): Promise<Data> {
+export async function getGistData<Locale extends string>(
+  locale: Locale,
+): Promise<Data> {
   const baseURL = "https://api.github.com";
 
   const portifolioGistURL = new URL(
@@ -26,13 +32,22 @@ export async function getGistData(): Promise<Data> {
   const projectsData = data.files["projects.json"].content;
   const skillsData = data.files["skills.json"].content;
   const pastJobsData = data.files["pastJobs.json"].content;
-  const projects = JSON.parse(projectsData) as ProjectInterface[];
-  const curriculo = JSON.parse(skillsData) as CurriculoInterface;
-  const pastJobs = JSON.parse(pastJobsData) as WorkExperience[];
+  const projects = JSON.parse(projectsData) as InternationalizedGistFile<
+    Locale,
+    ProjectInterface[]
+  >;
+  const curriculo = JSON.parse(skillsData) as InternationalizedGistFile<
+    Locale,
+    CurriculoInterface
+  >;
+  const pastJobs = JSON.parse(pastJobsData) as InternationalizedGistFile<
+    Locale,
+    WorkExperience[]
+  >;
 
   return {
-    projects,
-    curriculo,
-    pastJobs,
+    projects: projects[locale],
+    curriculo: curriculo[locale],
+    pastJobs: pastJobs[locale],
   };
 }

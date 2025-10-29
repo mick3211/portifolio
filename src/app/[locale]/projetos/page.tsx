@@ -12,8 +12,8 @@ export const metadata = {
 export default async function Projects({
   params,
 }: PageProps<"/[locale]/projetos">) {
-  const { projects } = await getGistData();
   const locale = (await params).locale;
+  const { projects } = await getGistData(locale);
   setRequestLocale(locale);
   const t = await getTranslations("common");
 

@@ -8,8 +8,8 @@ import { getGistData } from "@/utils/getGistData";
 import { setRequestLocale } from "next-intl/server";
 
 export default async function Home({ params }: PageProps<"/[locale]">) {
-  const { pastJobs, curriculo, projects } = await getGistData();
   const locale = (await params).locale;
+  const { pastJobs, curriculo, projects } = await getGistData(locale);
   setRequestLocale(locale);
 
   return (
