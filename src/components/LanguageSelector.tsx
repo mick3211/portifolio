@@ -1,13 +1,14 @@
 import * as Switch from "@radix-ui/react-switch";
 import { getLocale } from "next-intl/server";
 import { redirect } from "@/i18n/navigation";
+import { RedirectType } from "next/navigation";
 
 async function toogleToEnglish(isOn: boolean) {
   "use server";
 
   const newLocale = isOn ? "en" : "pt-BR";
 
-  redirect({ href: "/", locale: newLocale });
+  redirect({ href: "/", locale: newLocale }, RedirectType.replace);
 }
 
 export const LanguageSelector: React.FC = async () => {
