@@ -1,6 +1,7 @@
 "use server";
 
 import { mailgunRecipient, mg } from "@/data/service/mailgun";
+import { getTranslations } from "next-intl/server";
 
 export type SendEmailActionState = {
   error: boolean;
@@ -11,6 +12,7 @@ export default async function sendEmail(
   _: any,
   formData: FormData,
 ): Promise<SendEmailActionState> {
+  const t = await getTranslations("main.contact.errors");
   const name = formData.get("fullName") as string;
   const email = formData.get("email") as string;
   const subject = formData.get("subject") as string;
@@ -20,7 +22,7 @@ export default async function sendEmail(
   if (!name || !email || !subject || !content) {
     return {
       error: true,
-      message: "Campos inválidos",
+      message: t("invalidFields"),
     };
   }
 
@@ -50,8 +52,7 @@ export default async function sendEmail(
     console.error("Error sending email:", error);
     return {
       error: true,
-      message:
-        "Não foi possível enviar o email. Por favor, tente novamente mais tarde.",
+      message: t("generic"),
     };
   }
 
