@@ -15,7 +15,7 @@ export const SectionTitled: React.FC<SectionTitledProps> = ({
   return (
     <section {...props}>
       <div className="relative overflow-hidden">
-        <h2 className="relative mb-6 w-fit text-xl font-semibold after:absolute after:-bottom-1 after:left-0 after:h-[2px] after:w-10/12 after:bg-blue-500">
+        <h2 className="relative mb-6 w-fit text-xl font-semibold after:absolute after:-bottom-1 after:left-0 after:h-0.5 after:w-10/12 after:bg-blue-500">
           {title}
         </h2>
         <SectionAnimatedText title={decorationText ?? title} />
