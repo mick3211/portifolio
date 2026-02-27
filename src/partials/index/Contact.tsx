@@ -1,44 +1,40 @@
-"use client";
-
 import { Button } from "@/components/form/Button/Button";
-import sendEmail, {
-  SendEmailActionState,
-} from "@/app/[locale]/actions/sendEmail";
-import { useActionState } from "react";
 import { Input } from "@/components/form/Input";
 import { Form } from "@/components/form/Form";
-import { motion } from "framer-motion";
-import { useTranslations } from "next-intl";
+import { getTranslations, type TranslationProps } from "@/i18n";
 
-const initialState: SendEmailActionState = {
-  error: false,
-};
-
-export const Contact: React.FC = () => {
-  const t = useTranslations("main.contact");
-  const [formState, action, isPending] = useActionState(
-    sendEmail,
-    initialState,
-  );
-  const formSuccess = !formState.error && !!formState.message;
-  const formError = formState.error && formState.message;
-  const buttonDisabled = isPending || formSuccess;
+export const Contact: React.FC<TranslationProps> = async ({ locale }) => {
+  const t = await getTranslations(locale);
 
   return (
     <section
       id="contato"
-      className="mb-6 mt-24 rounded-lg bg-gradient-to-tl from-blue-950 to-blue-900 p-5 print:hidden sm:px-10 sm:py-8"
+      className="mt-24 mb-6 rounded-lg bg-linear-to-tl from-blue-950 to-blue-900 p-5 sm:px-10 sm:py-8 print:hidden"
     >
-      <h2 className="mb-6 text-3xl font-bold md:text-4xl">{t("title")}</h2>
+      <h2 className="mb-6 text-3xl font-bold md:text-4xl">
+        {t.main.contact.title}
+      </h2>
 
       <Form
-        action={action}
+        action="https://api.web3forms.com/submit"
+        method="POST"
         className="grid grid-cols-1 grid-rows-3 gap-y-4 md:grid-cols-2 md:gap-x-4"
       >
+        <input
+          type="hidden"
+          name="access_key"
+          value={process.env.NEXT_PUBLIC_FORM_KEY}
+        />
+        <input type="hidden" name="from_name" value="Portifólio" />
+        <input
+          type="hidden"
+          name="redirect"
+          value={`https://mickaelf.dev/${locale}/success`}
+        />
         <Input
           name="fullName"
-          placeholder={t("name.placeholder")}
-          label={t("name.label")}
+          placeholder={t.main.contact.name.placeholder}
+          label={t.main.contact.name.label}
           pattern="^[a-zA-ZÀ-ÿ\s]+$"
           required
           minLength={3}
@@ -47,8 +43,8 @@ export const Contact: React.FC = () => {
         />
         <Input
           name="email"
-          placeholder={t("email.placeholder")}
-          label={t("email.label")}
+          placeholder={t.main.contact.email.placeholder}
+          label={t.main.contact.email.label}
           type="email"
           required
           minLength={3}
@@ -57,8 +53,8 @@ export const Contact: React.FC = () => {
         />
         <Input
           name="subject"
-          placeholder={t("subject.placeholder")}
-          label={t("subject.label")}
+          placeholder={t.main.contact.subject.placeholder}
+          label={t.main.contact.subject.label}
           required
           minLength={5}
           maxLength={50}
@@ -67,40 +63,16 @@ export const Contact: React.FC = () => {
         <Input
           as={<textarea className="h-full" />}
           name="content"
-          placeholder={t("message.placeholder")}
-          label={t("message.label")}
+          placeholder={t.main.contact.message.placeholder}
+          label={t.main.contact.message.label}
           required
           minLength={10}
           maxLength={500}
           className="row-start-4 md:col-start-2 md:col-end-3 md:row-start-1 md:row-end-4"
         />
         <div className="col-span-2 flex flex-col justify-between gap-2 md:flex-row md:items-center">
-          {formError && (
-            <motion.p
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              className="rounded-md bg-red-400 px-2 py-1 text-sm text-red-950"
-              role="alert"
-            >
-              {formState.message}
-            </motion.p>
-          )}
-          {formSuccess && (
-            <motion.p
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              className="rounded-md bg-green-400 px-2 py-1 text-sm text-green-950"
-              role="alert"
-            >
-              {t("success")}
-            </motion.p>
-          )}
-          <Button
-            type="submit"
-            disabled={buttonDisabled}
-            className="sm:ml-auto"
-          >
-            {t("submit")}
+          <Button type="submit" className="sm:ml-auto">
+            {t.main.contact.submit}
             <svg
               width="15"
               height="15"

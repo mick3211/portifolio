@@ -1,6 +1,6 @@
 import type { CurriculoInterface } from "@/@types/CurriculoInterface";
 import type { ProjectInterface } from "@/@types/ProjectInterface";
-import { WorkExperience } from "@/@types/WorkExperience";
+import type { WorkExperience } from "@/@types/WorkExperience";
 
 interface Data {
   projects: ProjectInterface[];

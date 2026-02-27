@@ -1,7 +1,7 @@
-import createNextIntlPlugin from "next-intl/plugin";
 import { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  reactCompiler: true,
   images: {
     remotePatterns: [
       { hostname: "images2.imgbox.com", pathname: "**" },
@@ -9,7 +9,7 @@ const nextConfig: NextConfig = {
     ],
     unoptimized: true,
   },
+  output: "export",
 };
 
-const withNextIntl = createNextIntlPlugin();
-export default withNextIntl(nextConfig);
+export default nextConfig;
