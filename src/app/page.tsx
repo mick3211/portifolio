@@ -27,7 +27,7 @@ export default function RootPage() {
         <meta httpEquiv="refresh" content="0; url=/pt-BR" />
         <title>Mickael Rodrigues | Portfolio</title>
       </Head>
-      <body className="flex h-screen w-screen items-center justify-center bg-slate-950">
+      <body className="flex h-screen w-screen items-center justify-center bg-zinc-900">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="24"
