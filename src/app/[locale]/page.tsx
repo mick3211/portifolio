@@ -1,6 +1,6 @@
 import { Locale } from "@/i18n";
 import { About } from "@/partials/index/About";
-// import { Contact } from "@/partials/index/Contact";
+import { Contact } from "@/partials/index/Contact";
 import { Experiences } from "@/partials/index/Experiences";
 import { Hero } from "@/partials/index/Hero";
 import { Portfolio } from "@/partials/index/Portfolio";
@@ -20,7 +20,7 @@ export default async function Home({ params }: PageProps<"/[locale]">) {
       <Portfolio locale={locale} projects={projects} />
       <Experiences locale={locale} curriculo={curriculo} />
       <TimeLine locale={locale} pastJobs={pastJobs} />
-      {/* <Contact /> */}
+      <Contact locale={locale} />
     </main>
   );
 }

@@ -20,11 +20,9 @@ export const locales = Object.keys(dictionaries);
 export const getTranslations = async (locale: Locale) =>
   await dictionaries[locale]();
 
-export const Link: React.FC<TranslationProps & LinkProps> = async ({
-  locale,
-  href,
-  ...props
-}) => {
+export const Link: React.FC<
+  React.PropsWithChildren<TranslationProps & LinkProps>
+> = async ({ locale, href, ...props }) => {
   const localizedHref =
     typeof href === "string"
       ? `/${locale}${href}`

@@ -41,7 +41,7 @@ export async function generateMetadata({
     authors: [
       {
         name: "Mickael Felizardo",
-        url: "https://linkedin.com/in/mickael-felizardo-5221431b4",
+        url: "www.linkedin.com/in/mickaelf-dev",
       },
     ],
   };
