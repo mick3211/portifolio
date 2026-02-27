@@ -7,7 +7,7 @@ import Image from "next/image";
 import { AnimatedLines } from "@/components/AnimatedLines";
 import { Button } from "@/components/form/Button/Button";
 import Link from "next/link";
-import { getTranslations } from "next-intl/server";
+import { getTranslations, type TranslationProps } from "@/i18n";
 
 const skillIcons = [
   {
@@ -24,8 +24,8 @@ const skillIcons = [
   },
 ];
 
-export const Hero: React.FC = async () => {
-  const t = await getTranslations();
+export const Hero: React.FC<TranslationProps> = async ({ locale }) => {
+  const t = await getTranslations(locale);
 
   return (
     <section id="hero" className="mb-24 mt-24 gap-12 sm:mt-32">
@@ -48,7 +48,7 @@ export const Hero: React.FC = async () => {
           aria-hidden
         />
         <h1 className="text-4xl font-semibold sm:text-6xl 2xl:text-7xl">
-          {t("main.hero.title.1")} <br /> {t("main.hero.title.2")}
+          {t.main.hero.title[1]} <br /> {t.main.hero.title[2]}
         </h1>
         <div className="mt-6 flex gap-2">
           {skillIcons.map((icon) => (
@@ -75,7 +75,7 @@ export const Hero: React.FC = async () => {
             variants={{ size: "large", style: "outlined" }}
             className="flex-1"
           >
-            {t("common.projects")}
+            {t.common.projects}
           </Button>
           <Button
             as={Link}
@@ -83,7 +83,7 @@ export const Hero: React.FC = async () => {
             variants={{ size: "large" }}
             className="flex-1"
           >
-            {t("common.contactMe")}
+            {t.common.contactMe}
           </Button>
         </div>
       </div>

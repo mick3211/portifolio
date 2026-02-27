@@ -3,7 +3,8 @@ import { SectionTitled } from "@/components/SectionTitled";
 import { getGistData } from "@/utils/getGistData";
 import Image from "next/image";
 import Gradient from "../../../../public/gradient.png";
-import { getTranslations, setRequestLocale } from "next-intl/server";
+import { getTranslations, hasLocale } from "@/i18n";
+import { notFound } from "next/navigation";
 
 export const metadata = {
   title: "Projetos",
@@ -15,13 +16,17 @@ export default async function Projects({
   params,
 }: PageProps<"/[locale]/projetos">) {
   const locale = (await params).locale;
+  if (!hasLocale(locale)) notFound();
+
+  const t = await getTranslations(locale);
   const { projects } = await getGistData(locale);
-  setRequestLocale(locale);
-  const t = await getTranslations("common");
 
   return (
     <main className="relative pb-12" role="main">
-      <SectionTitled title={t("allProjects")} decorationText={t("projects")}>
+      <SectionTitled
+        title={t.common.allProjects}
+        decorationText={t.common.projects}
+      >
         <ul className="grid items-stretch gap-8 md:mr-64 lg:grid-cols-2 xl:grid-cols-3">
           {projects.map((project, index) => (
             <li key={index}>

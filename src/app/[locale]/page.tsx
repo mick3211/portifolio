@@ -1,27 +1,26 @@
+import { Locale } from "@/i18n";
 import { About } from "@/partials/index/About";
-import { Contact } from "@/partials/index/Contact";
+// import { Contact } from "@/partials/index/Contact";
 import { Experiences } from "@/partials/index/Experiences";
 import { Hero } from "@/partials/index/Hero";
 import { Portfolio } from "@/partials/index/Portfolio";
-import { TimeLine } from "@/partials/index/Timeline";
+import { TimeLine } from "@/partials/index/timeline/Timeline";
 import { getGistData } from "@/utils/getGistData";
-import { setRequestLocale } from "next-intl/server";
 
 export const revalidate = 86400; // 1 day
 
 export default async function Home({ params }: PageProps<"/[locale]">) {
-  const locale = (await params).locale;
+  const locale = (await params).locale as Locale;
   const { pastJobs, curriculo, projects } = await getGistData(locale);
-  setRequestLocale(locale);
 
   return (
     <main role="main">
-      <Hero />
-      <About />
-      <Portfolio projects={projects} />
-      <Experiences curriculo={curriculo} />
-      <TimeLine pastJobs={pastJobs} />
-      <Contact />
+      <Hero locale={locale} />
+      <About locale={locale} />
+      <Portfolio locale={locale} projects={projects} />
+      <Experiences locale={locale} curriculo={curriculo} />
+      <TimeLine locale={locale} pastJobs={pastJobs} />
+      {/* <Contact /> */}
     </main>
   );
 }
