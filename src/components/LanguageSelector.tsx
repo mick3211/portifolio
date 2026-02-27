@@ -1,23 +1,23 @@
+"use client";
+
+import type { TranslationProps } from "@/i18n";
 import * as Switch from "@radix-ui/react-switch";
-import { getLocale } from "next-intl/server";
-import { redirect } from "@/i18n/navigation";
-import { RedirectType } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 
-async function toogleToEnglish(isOn: boolean) {
-  "use server";
-
-  const newLocale = isOn ? "en" : "pt-BR";
-
-  redirect({ href: "/", locale: newLocale }, RedirectType.replace);
-}
-
-export const LanguageSelector: React.FC = async () => {
-  const locale = await getLocale();
+export const LanguageSelector: React.FC<TranslationProps> = ({ locale }) => {
+  const router = useRouter();
+  const pathName = usePathname();
   const isEnglish = locale === "en";
+
+  const toogleToEnglish = () => {
+    const newLocale = isEnglish ? "pt-BR" : "en";
+    const newPath = pathName.replace(`/${locale}`, `/${newLocale}`);
+    router.replace(newPath);
+  };
 
   return (
     <Switch.Root
-      className="relative w-[3.250rem] cursor-pointer rounded-full bg-zinc-700 p-0.5 transition-colors hover:bg-zinc-600 data-[state=checked]:bg-blue-900 data-[state=checked]:hover:bg-blue-800"
+      className="relative w-13 cursor-pointer rounded-full bg-zinc-700 p-0.5 transition-colors hover:bg-zinc-600 data-[state=checked]:bg-blue-900 data-[state=checked]:hover:bg-blue-800"
       onCheckedChange={toogleToEnglish}
       defaultChecked={isEnglish}
       aria-label={isEnglish ? "Mudar para Português" : "Switch to English"}

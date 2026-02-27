@@ -1,7 +1,8 @@
 import Link from "next/link";
 import { LanguageSelector } from "./LanguageSelector";
+import type { TranslationProps } from "@/i18n";
 
-export const Header: React.FC = () => {
+export const Header: React.FC<TranslationProps> = ({ locale }) => {
   return (
     <header className="mb-24 mt-4 flex items-center justify-between">
       <Link href="/">
@@ -54,7 +55,7 @@ export const Header: React.FC = () => {
             ></path>
           </svg>
         </Link>
-        <LanguageSelector />
+        <LanguageSelector locale={locale} />
       </div>
     </header>
   );

@@ -1,8 +1,8 @@
-import { getTranslations } from "next-intl/server";
+import { getTranslations, type TranslationProps } from "@/i18n";
 import Image from "next/image";
 
-export const About: React.FC = async () => {
-  const t = await getTranslations("main.about");
+export const About: React.FC<TranslationProps> = async ({ locale }) => {
+  const t = await getTranslations(locale);
 
   return (
     <section id="about" className="mb-24">
@@ -17,7 +17,7 @@ export const About: React.FC = async () => {
         />
         <div>
           <p className="mb-2 max-w-[48ch] text-base leading-7 sm:text-justify md:text-lg">
-            {t("description")}
+            {t.main.about.description}
           </p>
           <span className="text-sm italic text-neutral-300 underline decoration-blue-500 underline-offset-2">
             Mickael Rodrigues Felizardo

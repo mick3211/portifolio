@@ -1,10 +1,8 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 
 @layer base {
   body {
-    @apply bg-zinc-900 text-neutral-50 overflow-x-hidden print:text-neutral-950;
+    @apply overflow-x-hidden bg-zinc-900 text-neutral-50 print:text-neutral-950;
   }
 }
 
@@ -17,7 +15,7 @@
     @apply print:hidden;
   }
 
-  [aria-hidden='true'] {
+  [aria-hidden="true"] {
     @apply print:hidden;
   }
 }

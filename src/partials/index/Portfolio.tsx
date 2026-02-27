@@ -5,20 +5,22 @@ import Image from "next/image";
 import { MotionDiv } from "@/components/clientComponents/MotionDiv";
 import { Button } from "@/components/form/Button/Button";
 import type { ProjectInterface } from "@/@types/ProjectInterface";
-import { getTranslations } from "next-intl/server";
-import { Link } from "@/i18n/navigation";
+import { getTranslations, Link, type TranslationProps } from "@/i18n";
 
 type PortfolioProps = {
   projects: ProjectInterface[];
-};
+} & TranslationProps;
 
-export const Portfolio: React.FC<PortfolioProps> = async ({ projects }) => {
-  const t = await getTranslations("common");
+export const Portfolio: React.FC<PortfolioProps> = async ({
+  projects,
+  locale,
+}) => {
+  const t = await getTranslations(locale);
 
   return (
     <div className="relative">
       <SectionTitled
-        title={t("projects")}
+        title={t.common.projects}
         decorationText="Projects"
         id="Portifolio"
       >
@@ -49,11 +51,12 @@ export const Portfolio: React.FC<PortfolioProps> = async ({ projects }) => {
 
         <Button
           as={Link}
+          locale={locale}
           href="/projetos"
           variants={{ style: "outlined" }}
           className="mt-8 max-md:w-full md:mr-64"
         >
-          {t("seeAllProjects")}
+          {t.common.seeAllProjects}
           <svg
             width="32"
             height="32"
@@ -70,7 +73,7 @@ export const Portfolio: React.FC<PortfolioProps> = async ({ projects }) => {
           </svg>
         </Button>
       </SectionTitled>
-      <span className="absolute -bottom-48 -left-[600px] -z-50 md:scale-125">
+      <span className="absolute -bottom-48 -left-150 -z-50 md:scale-125">
         <MotionDiv
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}

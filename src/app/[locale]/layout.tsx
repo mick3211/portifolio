@@ -3,15 +3,13 @@ import { Header } from "@/components/Header";
 import { Inter } from "next/font/google";
 import type { Metadata, Viewport } from "next";
 import { Analytics } from "@vercel/analytics/next";
-import { hasLocale, NextIntlClientProvider } from "next-intl";
-import { routing } from "@/i18n/routing";
 import { notFound } from "next/navigation";
-import { getTranslations, setRequestLocale } from "next-intl/server";
+import { getTranslations, hasLocale, Locale, locales } from "@/i18n";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export function generateStaticParams() {
-  return routing.locales.map((locale) => ({ locale }));
+  return locales.map((locale) => ({ locale }));
 }
 
 export async function generateMetadata({
@@ -20,14 +18,14 @@ export async function generateMetadata({
   params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
   const { locale } = await params;
-  const t = await getTranslations({ locale, namespace: "metadata" });
+  const t = await getTranslations(locale as Locale);
 
   return {
     title: {
       default: "Mickael Dev",
       template: "Mickael Dev | %s",
     },
-    description: t("description"),
+    description: t.metadata.description,
     keywords: [
       "Desenvolvedor",
       "Front-end",
@@ -59,7 +57,7 @@ export default async function RootLayout({
   params,
 }: LayoutProps<"/[locale]">) {
   const { locale } = await params;
-  if (!hasLocale(routing.locales, locale)) {
+  if (!hasLocale(locale)) {
     notFound();
   }
 
@@ -67,11 +65,9 @@ export default async function RootLayout({
     <html lang={locale}>
       <body className={inter.className}>
         <div className="container mx-auto px-4">
-          <NextIntlClientProvider>
-            <Header />
-            {children}
-            <Analytics />
-          </NextIntlClientProvider>
+          <Header locale={locale} />
+          {children}
+          <Analytics />
         </div>
       </body>
     </html>
