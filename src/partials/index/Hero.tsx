@@ -28,14 +28,14 @@ export const Hero: React.FC<TranslationProps> = async ({ locale }) => {
   const t = await getTranslations(locale);
 
   return (
-    <section id="hero" className="mb-24 mt-24 gap-12 sm:mt-32">
-      <div className="absolute -top-32 -z-50 w-full max-w-xl select-none opacity-10 max-sm:hidden sm:opacity-20 md:left-44">
+    <section id="hero" className="mt-24 mb-24 gap-12 sm:mt-32">
+      <div className="absolute -top-32 -z-50 w-full max-w-xl opacity-10 select-none max-sm:hidden sm:opacity-20 md:left-44">
         <AnimatedLines />
       </div>
       <div className="relative w-full">
         <Image
           src={Gradient}
-          className="absolute -z-50 animate-fadeIn select-none sm:-top-64"
+          className="animate-fadeIn absolute -z-50 select-none sm:-top-64"
           alt=""
           aria-hidden
         />
@@ -43,7 +43,7 @@ export const Hero: React.FC<TranslationProps> = async ({ locale }) => {
       <div className="relative mx-auto w-fit max-w-md sm:w-full">
         <Image
           src={Lines}
-          className="absolute -left-4 -top-7 -z-50 w-1/6 max-w-[86px] select-none sm:-left-6 sm:-top-10"
+          className="absolute -top-7 -left-4 -z-50 w-1/6 max-w-21.5 select-none sm:-top-10 sm:-left-6"
           alt=""
           aria-hidden
         />

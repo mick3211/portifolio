@@ -73,7 +73,7 @@ export const Portfolio: React.FC<PortfolioProps> = async ({
           </svg>
         </Button>
       </SectionTitled>
-      <span className="absolute -bottom-48 -left-[600px] -z-50 md:scale-125">
+      <span className="absolute -bottom-48 -left-150 -z-50 md:scale-125">
         <MotionDiv
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}

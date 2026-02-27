@@ -17,7 +17,7 @@ export const LanguageSelector: React.FC<TranslationProps> = ({ locale }) => {
 
   return (
     <Switch.Root
-      className="relative w-[3.250rem] cursor-pointer rounded-full bg-zinc-700 p-0.5 transition-colors hover:bg-zinc-600 data-[state=checked]:bg-blue-900 data-[state=checked]:hover:bg-blue-800"
+      className="relative w-13 cursor-pointer rounded-full bg-zinc-700 p-0.5 transition-colors hover:bg-zinc-600 data-[state=checked]:bg-blue-900 data-[state=checked]:hover:bg-blue-800"
       onCheckedChange={toogleToEnglish}
       defaultChecked={isEnglish}
       aria-label={isEnglish ? "Mudar para Português" : "Switch to English"}
