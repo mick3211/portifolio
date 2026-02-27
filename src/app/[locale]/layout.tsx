@@ -1,4 +1,4 @@
-import "./globals.css";
+import "../globals.css";
 import { Header } from "@/components/Header";
 import { Inter } from "next/font/google";
 import type { Metadata, Viewport } from "next";
@@ -25,6 +25,16 @@ export async function generateMetadata({
       default: "Mickael Dev",
       template: "Mickael Dev | %s",
     },
+    alternates: {
+      canonical: "https://mickaelf.dev/pt-BR",
+      languages: {
+        en: "https://mickaelf.dev/en",
+      },
+    },
+    other: {
+      refresh: "dawdaw",
+    },
+
     description: t.metadata.description,
     keywords: [
       "Desenvolvedor",
